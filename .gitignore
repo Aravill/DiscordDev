@@ -1,0 +1,4 @@
+./bot/node_modules
+./aravilltheme/*
+!./aravilltheme/*.css
+!./aravilltheme/*.json
