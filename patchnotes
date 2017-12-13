@@ -30,4 +30,7 @@
       - Added "logging" command that turns logging on or off
       - Removed the auth.json file from future commits for security reasons
 ### 13/12/17 16:11 ###
+  - Bot
       - Added a graph of the bot's functionality
+### 13/12/17 16:21 ###
+  - Added a procfile for Heroku hosting
