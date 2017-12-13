@@ -29,3 +29,5 @@
       - Added "help" command that lists all available commands
       - Added "logging" command that turns logging on or off
       - Removed the auth.json file from future commits for security reasons
+### 13/12/17 16:11 ###
+      - Added a graph of the bot's functionality
