@@ -1,4 +1,5 @@
 bot/node_modules
+bot/auth.json
 aravilltheme/*
 !aravilltheme/*.css
 !aravilltheme/*.json
