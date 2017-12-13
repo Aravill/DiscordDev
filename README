@@ -1,0 +1,11 @@
+### DiscordDev ###
+This project consists of a simple nodejs bot that will in time have functions
+to play music or pull information form game statistic sites and a css discord
+theme. Both parts of this project are meant to help me learn more about discord
+and it's api.
+To make the custom discord theme work, you'll need a 3rd party css injector for
+discord like BetterDiscord or (preffered by me) BeautifulDiscord.
+For security reasons, the discord bot files are missing the "auth.json" because
+it has the bot security token. If you wish to make the bot work, you'll need to
+register a discord application through the www.discordapp.com website and get
+your own token

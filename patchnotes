@@ -7,3 +7,25 @@
     commits than commit messages
   - Added a npminstall.txt file with commands to install necessary node
     libraries
+### 13/12/17 15:00 ###
+  - README
+      - Updated the README file
+  - Bot
+      - Changed method structure
+      - Added "messageHandler" method that now detects incoming commands,
+        calls "commandHandler" and relays a structured command object to it
+      - Renamed "searchCommand" method to "findCommand"
+      - Added command parameter validation into "findCommand" method
+      - Added "commandHandler" method that calls "findCommand" to compare input
+        command with the list of known commands, if command is found,
+        "commandExecutor" is called
+      - Added "commandExecutor" method that calls the execute method of a given
+        command and if logging is enabled, calls a Log method
+      - Added "log" method that sends responds to chat to give user feedback
+      - Added global "activeChannel" object that is used to relay messages back
+        to user
+      - Added "prefix" command that changes currently used prefix (doesn't
+        change the config file)
+      - Added "help" command that lists all available commands
+      - Added "logging" command that turns logging on or off
+      - Removed the auth.json file from future commits for security reasons
