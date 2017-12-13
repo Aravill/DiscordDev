@@ -1,0 +1,2 @@
+** These commands will install the necessary node libraries **
+npm install discord.js --save

@@ -1,0 +1,9 @@
+### This file will provide more information about separate commits           ###
+### than commit messages                                                     ###
+
+### 12/12/17 20:43 ###
+  - Added a README.txt file with basic project info
+  - Added a patchnotes.txt file that will provide more information about
+    commits than commit messages
+  - Added a npminstall.txt file with commands to install necessary node
+    libraries
