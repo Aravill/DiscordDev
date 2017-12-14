@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Aravill's training discord bot",
   "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
   "author": "Aravill",
   "dependencies": {
     "discord.io": "^2.5.3",
