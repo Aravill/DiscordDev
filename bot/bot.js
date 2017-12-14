@@ -11,9 +11,6 @@ const client = new Discord.Client();
 var activeChannel = null;
 var logging = true;
 //------------------------------------------------------------------------------
-// Load auth token from .env
-
-//------------------------------------------------------------------------------
 // List of bot commands
 var commands = [
   {
@@ -49,7 +46,7 @@ var commands = [
       let prefix = params[0];
       config.prefix = prefix;
       config.prefixLenght = prefix.length;
-      //writeToJSONFile(config, configPath);
+      writeToJSONFile(config, configPath);
       output.response = "Prefix changed to: " + prefix;
     }
   },
@@ -92,14 +89,11 @@ function log(channel, content){
 function messageHandler(message){
   // Check if message begins with the defined prefix && check if the message
   // wasn't sent by the bot itself to prevent infinite looping
-  console.log("Handler called");
-  let possiblePrefix = message.content.splice(0, config.prefix.length)[0];
-  console.log("Possible prefix: " + possiblePrefix);
+  let possiblePrefix = message.content.substring(0, config.prefix.length);
   if(possiblePrefix == config.prefix && message.author.id !== client.user.id){
     activeChannel = message.channel;
     // Split message content into string array and remove prefix
     let commandArray = message.content.substring(config.prefixLenght).split(" ");
-    console.log(commandArray);
     let paramArray = commandArray;
     // Create a structured object from array
     let command = {
