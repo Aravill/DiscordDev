@@ -2,6 +2,8 @@
 console.log("Starting bot");
 // Load dependencies
 const Discord = require("discord.js");
+const FileSys = require("fs");
+const configPath = "./config.json";
 var config = require("./config.json");
 // Create new instance of the discord client
 const client = new Discord.Client();
@@ -47,7 +49,7 @@ var commands = [
       let prefix = params[0];
       config.prefix = prefix;
       config.prefixLenght = prefix.length;
-
+      //writeToJSONFile(config, configPath);
       output.response = "Prefix changed to: " + prefix;
     }
   },
@@ -76,6 +78,12 @@ var commands = [
   ];
 //------------------------------------------------------------------------------
 // Functions
+// Write into json file
+function writeToJSONFile(file, filepath){
+  FileSys.writeFile(filepath, JSON.stringify(file), function(err){
+    if(err) return console.log("Failed to write into file " + err);
+  });
+}
 // Logging function
 function log(channel, content){
   channel.send({embed: {color: 4447003, description: content}});
@@ -84,10 +92,14 @@ function log(channel, content){
 function messageHandler(message){
   // Check if message begins with the defined prefix && check if the message
   // wasn't sent by the bot itself to prevent infinite looping
-  if(message.content[0] == config.prefix && message.author.id !== client.user.id){
+  console.log("Handler called");
+  let possiblePrefix = message.content.splice(0, config.prefix.length)[0];
+  console.log("Possible prefix: " + possiblePrefix);
+  if(possiblePrefix == config.prefix && message.author.id !== client.user.id){
     activeChannel = message.channel;
     // Split message content into string array and remove prefix
     let commandArray = message.content.substring(config.prefixLenght).split(" ");
+    console.log(commandArray);
     let paramArray = commandArray;
     // Create a structured object from array
     let command = {
