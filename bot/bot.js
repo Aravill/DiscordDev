@@ -2,13 +2,15 @@
 console.log("Starting bot");
 // Load dependencies
 const Discord = require("discord.js");
-const auth = require("./auth.json");
 var config = require("./config.json");
 // Create new instance of the discord client
 const client = new Discord.Client();
 // Active text channel to listen on
 var activeChannel = null;
 var logging = true;
+//------------------------------------------------------------------------------
+// Load auth token from .env
+
 //------------------------------------------------------------------------------
 // List of bot commands
 var commands = [
@@ -138,4 +140,4 @@ client.on("message", (message) => {
 });
 //------------------------------------------------------------------------------
 // Bot login using the auth.token
-client.login(auth.token);
+client.login(process.env.TOKEN);

@@ -1,6 +1,7 @@
 bot/node_modules
 bot/auth.json
 bot/npm-debug.log
+bot/.env
 aravilltheme/*
 !aravilltheme/*.css
 !aravilltheme/*.json
