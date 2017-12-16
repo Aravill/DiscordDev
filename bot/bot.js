@@ -76,6 +76,14 @@ var commands = [
           output.response = "Incorrect logging state!";
           break;
       }
+    },
+    {
+      name: "privilege",
+      description: "Add/Remove user privilege to use the bot",
+      parameters: ["Whitelist/Blacklist", "Add/Remove", "User/Role/Channel"],
+      execute: function(){
+
+      }
     }
   }
   ];
