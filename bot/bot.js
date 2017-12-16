@@ -1,14 +1,20 @@
 // Check if node is working
 console.log("Starting bot");
-// Load dependencies
+// Load discord client dependency and create its instance
 const Discord = require("discord.js");
-const FileSys = require("fs");
+const client = new Discord.Client();
+// Load authenticator and create its instance
+const Authenticator = require("./authenticator");
+var auth = new Authenticator();
+// Load file handler
+const FileHandler = require("./filehandler.js");
+var fileHandler = new FileHandler();
+// Load config file
 const configPath = "./config.json";
 var config = require("./config.json");
-// Create new instance of the discord client
-const client = new Discord.Client();
 // Active text channel to listen on
 var activeChannel = null;
+// Activate logging into chat
 var logging = true;
 //------------------------------------------------------------------------------
 // List of bot commands
@@ -46,7 +52,7 @@ var commands = [
       let prefix = params[0];
       config.prefix = prefix;
       config.prefixLenght = prefix.length;
-      writeToJSONFile(config, configPath);
+      fileHandler.writeToJSONFile(config, configPath);
       output.response = "Prefix changed to: " + prefix;
     }
   },
@@ -75,12 +81,7 @@ var commands = [
   ];
 //------------------------------------------------------------------------------
 // Functions
-// Write into json file
-function writeToJSONFile(file, filepath){
-  FileSys.writeFile(filepath, JSON.stringify(file), function(err){
-    if(err) return console.log("Failed to write into file " + err);
-  });
-}
+
 // Logging function
 function log(channel, content){
   channel.send({embed: {color: 4447003, description: content}});
@@ -89,6 +90,7 @@ function log(channel, content){
 function messageHandler(message){
   // Check if message begins with the defined prefix && check if the message
   // wasn't sent by the bot itself to prevent infinite looping
+  console.log("Is user " + message.author.id + " valid?: " + auth.authenticateUser(message.author.id));
   let possiblePrefix = message.content.substring(0, config.prefix.length);
   if(possiblePrefix == config.prefix && message.author.id !== client.user.id){
     activeChannel = message.channel;
