@@ -3,15 +3,18 @@ console.log("Starting bot");
 // Load discord client dependency and create its instance
 const Discord = require("discord.js");
 const client = new Discord.Client();
-// Load authenticator and create its instance
-const Authenticator = require("./authenticator");
-var auth = new Authenticator();
+// Load authenticator
+// const Authenticator = require("./authenticator");
+// var auth = new Authenticator();
 // Load file handler
 const FileHandler = require("./filehandler.js");
 var fileHandler = new FileHandler();
 // Load config file
 const configPath = "./config.json";
 var config = require("./config.json");
+// Load PUBG PUBGTracker
+const PUBGTracker = require("./pubgtracker.js");
+var pubgTracker = new PUBGTracker(process.env.PUBGAPIKEY);
 // Active text channel to listen on
 var activeChannel = null;
 // Activate logging into chat
@@ -78,15 +81,25 @@ var commands = [
       }
     }
   },
-
   {
+    name: "statspubg",
+    description: "Prints out stats of a PUBG profile",
+    parameters: ["PUBG Nickname"],
+    execute: function(params, output){
+      let nickname = params[0];
+      pubgTracker.getProfileByNickname(nickname);
+      output.response = "Checked...";
+    }
+  }
+/*   {
     name: "privilege",
     description: "Add/Remove user privilege to use the bot",
     parameters: ["Whitelist/Blacklist", "Add/Remove", "User/Role/Channel"],
     execute: function(){
       output.response = "Nothing here yet";
     }
-  }
+  } */
+
 ];
 //------------------------------------------------------------------------------
 // Functions
@@ -97,9 +110,9 @@ function log(channel, content){
 }
 // Check incoming message
 function messageHandler(message){
-  // Check if message begins with the defined prefix && check if the message
-  // wasn't sent by the bot itself to prevent infinite looping
-  console.log("Is user " + message.author.id + " valid?: " + auth.authenticateUser(message.author.id));
+ /*Check if message begins with the defined prefix && check if the message
+   wasn't sent by the bot itself to prevent infinite looping */
+  // console.log("Is user " + message.author.id + " valid?: " + auth.authenticateUser(message.author.id));
   let possiblePrefix = message.content.substring(0, config.prefix.length);
   if(possiblePrefix == config.prefix && message.author.id !== client.user.id){
     activeChannel = message.channel;
