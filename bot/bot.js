@@ -14,7 +14,7 @@ const configPath = "./config.json";
 var config = require("./config.json");
 // Load PUBG PUBGTracker
 const PUBGTracker = require("./pubgtracker.js");
-var pubgTracker = new PUBGTracker(process.env.PUBGAPIKEY);
+var pubgTracker = new PUBGTracker(process.env.TRNAPIKEY);
 // Active text channel to listen on
 var activeChannel = null;
 // Activate logging into chat
@@ -87,8 +87,8 @@ var commands = [
     parameters: ["PUBG Nickname"],
     execute: function(params, output){
       let nickname = params[0];
-      pubgTracker.getProfileByNickname(nickname);
-      output.response = "Checked...";
+      console.log(pubgTracker.getProfileByNickname(nickname));
+      output.response = "I Checked";
     }
   }
 /*   {
