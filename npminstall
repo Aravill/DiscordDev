@@ -1,4 +1,4 @@
-** These commands will install the necessary node libraries **
-npm install discord.js --save
-npm install fs --save
-npm install pubg-api-redis --save
+** This command will install the necessary node modules **
+**      Run this command in the /bot/src directory      **
+
+npm install discord.js fs http pubg-stats node-fetch --save

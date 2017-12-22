@@ -1,5 +1,4 @@
-bot/node_modules
-bot/npm-debug.log
+bot/src/node_modules
 bot/.env
 aravilltheme/*
 !aravilltheme/*.css

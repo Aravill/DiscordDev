@@ -34,3 +34,15 @@
       - Added a graph of the bot's functionality
 ### 13/12/17 16:21 ###
   - Added a procfile for Heroku hosting
+### 22/12/17 12:20 ###
+  - Bot
+      - Added a directory structure for better management of the project
+      - Added httphandler for http communication (requires node-fetch)
+      - Added pubgtracker which uses pubgtracker.com api to pull pubg player
+        statistics from a server using the httphandler
+      - Added authenticator which will in time be used to blacklist/whitelist
+        users, groups, and channels
+      - Added profile and stats as structures for the pubgtracker
+      - Added channels, roles and users json files for white/black listing
+  - Changed procfile to point to ./src/bot.js
+  - Updated npminstall

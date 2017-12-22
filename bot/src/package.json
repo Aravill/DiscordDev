@@ -8,8 +8,10 @@
   },
   "author": "Aravill",
   "dependencies": {
+    "dateformat": "^3.0.2",
     "discord.js": "^11.2.1",
     "fs": "0.0.1-security",
-    "node-fetch": "^1.7.3"
+    "node-fetch": "^1.7.3",
+    "pubg-stats": "^0.2.0"
   }
 }
